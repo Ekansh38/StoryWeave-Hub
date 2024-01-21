@@ -1,0 +1,19 @@
+{% extends 'hub/base.html' %}
+
+
+{% block title %}
+    Login
+{% endblock %}
+
+
+{% block content %}
+    <h1>Login</h1>
+    <form action="{% url 'signup' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="username"> 
+        <input type="password" name="password" value="">
+        <input type="password" name="password_confirm" value="">
+        <input type="submit" value="login">
+    </form>
+{% endblock %}
+
