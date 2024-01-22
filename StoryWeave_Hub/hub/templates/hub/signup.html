@@ -7,7 +7,10 @@
 
 
 {% block content %}
-    <h1>Login</h1>
+    <h1>Signup</h1>
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
     <form action="{% url 'signup' %}" method="post">
         {% csrf_token %}
         <input type="text" name="username"> 
@@ -15,5 +18,7 @@
         <input type="password" name="password_confirm" value="">
         <input type="submit" value="login">
     </form>
+    <a href="{% url 'index' %}">Home</a>
+
 {% endblock %}
 

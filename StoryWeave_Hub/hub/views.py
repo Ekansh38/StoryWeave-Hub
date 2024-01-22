@@ -31,6 +31,12 @@ def signup_view(request):
         username = request.POST['username']
         password = request.POST['password']
         password_confirm = request.POST['password_confirm']
+        list_of_users = User.objects.all().values_list('username', flat=True)
+
+        if username in list_of_users:
+            return render(request, 'hub/signup.html', {
+                "message": "Username Already Exists!"
+                })
 
         if password != password_confirm:
             return render(request, 'hub/signup.html', {
@@ -39,6 +45,7 @@ def signup_view(request):
 
         user = User.objects.create_user(username=username, password=password)
         user.save()
+        user.backend = 'django.contrib.auth.backends.ModelBackend'
         login(request, user)
         return HttpResponseRedirect(reverse('index'))
 

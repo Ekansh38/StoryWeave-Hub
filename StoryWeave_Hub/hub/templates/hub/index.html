@@ -7,5 +7,8 @@
 {% block content %}
     <h1>Home</h1>
     <p>Welcome to the home page!</p>
-    <h1>hi {{ user.username }}</h1>
+    <h1>Hello {{ user.username }}</h1>
+    <a href="{% url 'signup' %}">Signup</a>
+    <a href="{% url 'login' %}">login</a>
+    <a href="{% url 'logout' %}">logout</a>
 {% endblock %}
