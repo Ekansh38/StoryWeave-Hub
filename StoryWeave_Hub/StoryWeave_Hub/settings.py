@@ -144,5 +144,5 @@ LOGIN_REDIRECT_URL = 'index'
 LOGOUT_URL = 'logout'
 LOGOUT_REDIRECT_URL = 'index'
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv('id')
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv('secret')
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '842640415716-poqbtcqs85r8mccpjlaehmbchnfvgq10.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
