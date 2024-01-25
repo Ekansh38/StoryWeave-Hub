@@ -4,9 +4,15 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.models import User
 
+from .models import MainStory, Branch, Vote
+
 
 def index(request):
-    return render(request, 'hub/index.html')
+    if request.user.is_authenticated:
+        return render(request, 'hub/index_in.html', {
+            "user": request.user
+            })
+    return render(request, 'hub/index_out.html')
 
 
 def login_view(request):
@@ -55,3 +61,19 @@ def signup_view(request):
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse('index'))
+
+
+def main_story(request):
+    branches = MainStory.objects.all().order_by('id') #type: ignore 
+    story_text = ""
+
+    for branch in branches:
+        story_text += branch.branch.text_data
+
+    return render(request, 'hub/main_story.html', {
+        "story_text": story_text
+        })
+
+
+
+
