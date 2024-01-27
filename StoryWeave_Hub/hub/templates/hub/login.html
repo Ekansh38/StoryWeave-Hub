@@ -1,8 +1,8 @@
 {% extends 'hub/base.html' %}
-
+{% load static %}
 
 {% block title %}
-    Login
+Login
 {% endblock %}
 
 
@@ -10,11 +10,16 @@
     <h1>Login</h1>
     <form action="{% url 'login' %}" method="post">
         {% csrf_token %}
-        <input type="text" name="username"> 
+        <label for="username">Username:</label>
+        <input type="text" name="username">
+        <label for="password">Password:</label>
         <input type="password" name="password" value="">
         <input type="submit" value="login">
     </form>
 
-    <a href="{% url 'social:begin' 'google-oauth2' %}">Login with Google</a>
+    <button><a href="{% url 'social:begin' 'google-oauth2' %}"><img style="margin: 10px" src="{% static 'hub/google.png' %}" alt="Google Logo" width="60px" height="60px">Continue with Google</a></button>
+
+
+    <br><br>
     <a href="{% url 'index' %}">Home</a>
 {% endblock %}

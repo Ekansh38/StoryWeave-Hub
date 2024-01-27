@@ -7,9 +7,15 @@
 {% block content %}
 
     <h1>Welcome to StoryWeave Hub</h1>
-    <a href="{% url 'signup' %}"><button>Signup</button></a>
     <br>
-    <a href="{% url 'login' %}"><button>Login</button></a>
+    <div style="margin-bottom: 0.5em;">
+    <a href="{% url 'signup' %}"><button type="button" class="btn btn-primary">Sign Up</button></a>
+    </div>
+
+    <div>
+    <a href="{% url 'login' %}"><button type="button" class="btn btn-primary">Login</button></a>
+    </div>
+
 
 {% endblock %}
 
