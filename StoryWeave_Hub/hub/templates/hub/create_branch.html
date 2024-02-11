@@ -1,0 +1,10 @@
+{% extends 'hub/base.html' %}
+{% block title %}Create Branch{% endblock %}
+{% block content %}
+    <form action="{% url 'create_branch' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="title">
+        <textarea name="content" cols="30" rows="10"></textarea>
+        <input type="submit" value="Create Branch">
+    </form>
+{% endblock %}

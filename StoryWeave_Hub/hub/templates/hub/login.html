@@ -1,25 +1,89 @@
 {% extends 'hub/base.html' %}
 {% load static %}
-
-{% block title %}
-Login
-{% endblock %}
-
-
+{% block title %}Login{% endblock %}
 {% block content %}
     <h1>Login</h1>
-    <form action="{% url 'login' %}" method="post">
-        {% csrf_token %}
-        <label for="username">Username:</label>
-        <input type="text" name="username">
-        <label for="password">Password:</label>
-        <input type="password" name="password" value="">
-        <input type="submit" value="login">
-    </form>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form id="loginForm" action="{% url 'login' %}" method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username:</label>
+                        <input type="text" class="form-control" id="username" name="username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password:</label>
+                        <input type="password"
+                               class="form-control"
+                               id="password"
+                               name="password"
+                               value="">
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox"
+                               class="form-check-input"
+                               id="rememberCheckbox"
+                               name="remember">
+                        <label class="form-check-label" for="rememberCheckbox">Remember Me?</label>
+                    </div>
+                    <button type="submit" class="btn btn-success">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <a href="{% url 'social:begin' 'google-oauth2' %}">
+        <button type="button" id="google" class="btn btn-dark" style="width: 22vw;">
+            <img style="margin-right: 10px;
+                        margin-left: 6px"
+                 src="{% static 'hub/google.png' %}"
+                 alt="Google Logo"
+                 width="25vw"
+                 height="25vw">
+            Continue with Google
+        </button>
+    </a>
+    <br>
+    <!-- <a href="{% url 'index' %}"> -->
+    <!--     <button type="button" class="btn btn-primary">Home</button> -->
+    <!-- </a> -->
+    <script>
+document.getElementById("googleLoginButton").addEventListener("click", function() {
+    var checkbox = document.getElementById("rememberCheckbox");
 
-    <button><a href="{% url 'social:begin' 'google-oauth2' %}"><img style="margin: 10px" src="{% static 'hub/google.png' %}" alt="Google Logo" width="60px" height="60px">Continue with Google</a></button>
+    if (checkbox.checked) {
+        fetch("{% url 'remember' %}", {
+            method: 'GET',
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log("API request sent successfully.");
+            } else {
+                console.error("Error sending API request.");
+            }
+        })
+        .catch(error => {
+            console.error("Error sending API request:", error);
+        });
+    } else {
+        fetch("{% url 'un_remember' %}", {
+            method: 'GET',
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log("API request sent successfully.");
+            } else {
+                console.error("Error sending API request.");
+            }
+        })
+        .catch(error => {
+            console.error("Error sending API request:", error);
+        });
 
-
-    <br><br>
-    <a href="{% url 'index' %}">Home</a>
+    }
+});
+    </script>
 {% endblock %}

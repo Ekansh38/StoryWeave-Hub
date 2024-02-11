@@ -1,24 +1,36 @@
 {% extends 'hub/base.html' %}
-
-
-{% block title %}
-    Login
-{% endblock %}
-
-
+{% block title %}Sign Up{% endblock %}
 {% block content %}
     <h1>Signup</h1>
-    {% if message %}
-        <p>{{ message }}</p>
-    {% endif %}
-    <form action="{% url 'signup' %}" method="post">
-        {% csrf_token %}
-        <input type="text" name="username"> 
-        <input type="password" name="password" value="">
-        <input type="password" name="password_confirm" value="">
-        <input type="submit" value="login">
-    </form>
-    <a href="{% url 'index' %}">Home</a>
-
+    {% if message %}<div class="alert alert-danger" role="alert">{{ message }}</div>{% endif %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form action="{% url 'signup' %}" method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username:</label>
+                        <input type="text" class="form-control" id="username" name="username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password:</label>
+                        <input type="password"
+                               class="form-control"
+                               id="password"
+                               name="password"
+                               value="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password_confirm" class="form-label">Password Confirm:</label>
+                        <input type="password"
+                               class="form-control"
+                               id="password_confirm"
+                               name="password_confirm"
+                               value="">
+                    </div>
+                    <button type="submit" class="btn btn-success">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock %}
-

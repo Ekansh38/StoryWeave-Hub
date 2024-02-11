@@ -1,0 +1,9 @@
+{% extends 'hub/base.html' %}
+{% block title %}View Branches{% endblock %}
+{% block content %}
+    {% for branch in branches %}
+        <p>{{ branch.title }}</p>
+    {% empty %}
+        <p>No branches available</p>
+    {% endfor %}
+{% endblock %}

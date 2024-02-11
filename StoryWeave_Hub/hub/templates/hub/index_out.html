@@ -1,21 +1,63 @@
 {% extends 'hub/base.html' %}
+{% block title %}Home{% endblock %}
+{% block head %}
+    <style>
+        div {
+            display: flex;
+            width: 100vw;
+            gap: 2em;
+            justify-content: center;
+        }
 
-{% block title %}
-    Home
+        button {
+            font-size: 1.9rem !important;
+            padding: 0.45em 0.9em !important;
+            border-radius: 0.65em !important;
+        }
+
+        h1 {
+            font-size: 4.9rem;
+        }
+
+        @media (max-width: 1105px) {
+            h1 {
+                font-size: 3.5rem;  
+            }
+
+            button {
+                font-size: 1.7rem !important;
+                padding: 0.3 0.6em !important;
+                border-radius: 0.6em !important;
+            }
+        }
+
+        @media (max-width: 760px) {
+            h1 {
+                font-size: 2.2rem;  
+                margin-bottom: 2em;
+                text-decoration: bold;
+            }
+
+        }
+
+        @media (max-width: 380px) {
+            h1 {
+                left: 50%;
+                font-size: 2.5rem;
+                margin-bottom: 1em;
+            }
+        }
+
+    </style>
 {% endblock %}
-
 {% block content %}
-
     <h1>Welcome to StoryWeave Hub</h1>
-    <br>
-    <div style="margin-bottom: 0.5em;">
-    <a href="{% url 'signup' %}"><button type="button" class="btn btn-primary">Sign Up</button></a>
-    </div>
-
     <div>
-    <a href="{% url 'login' %}"><button type="button" class="btn btn-primary">Login</button></a>
+        <a href="{% url 'signup' %}">
+            <button type="button" class="btn btn-primary">Sign Up</button>
+        </a>
+        <a href="{% url 'login' %}">
+            <button type="button" class="btn btn-primary">Sign In</button>
+        </a>
     </div>
-
-
 {% endblock %}
-
