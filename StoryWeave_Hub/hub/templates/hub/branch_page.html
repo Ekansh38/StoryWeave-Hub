@@ -1,0 +1,7 @@
+{% extends 'hub/base.html' %}
+{% block title %}Branch {{ branch.title }}{% endblock %}
+{% block content %}
+    <h1>Branch {{ branch.title }}</h1>
+    <h2>By: {{ branch.author.username }}</h2>
+    <p>{{ branch.text_data }}</p>
+{% endblock %}

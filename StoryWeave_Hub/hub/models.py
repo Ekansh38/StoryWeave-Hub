@@ -1,5 +1,5 @@
-from django.db import models
 from django.contrib.auth.models import User
+from django.db import models
 
 
 class Branch(models.Model):
@@ -10,7 +10,7 @@ class Branch(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.title} - {self.text_data[:20]}...'
+        return f"{self.title} - {self.text_data[:20]}..."
 
 
 class MainStory(models.Model):
@@ -18,7 +18,7 @@ class MainStory(models.Model):
     branch = models.ForeignKey(Branch, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'Main Story: {str(self.branch)}'
+        return f"Main Story: {str(self.branch)}"
 
 
 class Vote(models.Model):
@@ -28,4 +28,4 @@ class Vote(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'Vote For: {str(self.branch)} By {str(self.user)}'
+        return f"Vote For: {str(self.branch)} By {str(self.user)}"

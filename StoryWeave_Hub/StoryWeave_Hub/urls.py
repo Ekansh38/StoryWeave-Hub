@@ -14,4 +14,5 @@ urlpatterns = [
     path("view_branches", views.view_branches, name="view_branches"),
     path("remember/", views.remember, name="remember"),
     path("un-remember/", views.un_remember, name="un_remember"),
+    path("branch/<int:branch_id>", views.branch_page, name="branch_page"),
 ]

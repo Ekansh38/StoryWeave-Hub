@@ -2,13 +2,6 @@
 {% block title %}Home{% endblock %}
 {% block head %}
     <style>
-        div {
-            display: flex;
-            width: 100vw;
-            gap: 2em;
-            justify-content: center;
-        }
-
         button {
             font-size: 1.9rem !important;
             padding: 0.45em 0.9em !important;
@@ -17,6 +10,7 @@
 
         h1 {
             font-size: 4.9rem;
+            margin-bottom: 0.5em;
         }
 
         @media (max-width: 1105px) {
@@ -52,7 +46,10 @@
 {% endblock %}
 {% block content %}
     <h1>Welcome to StoryWeave Hub</h1>
-    <div>
+    <div style="display: flex;
+                width: 100vw;
+                gap: 2em;
+                justify-content: center">
         <a href="{% url 'signup' %}">
             <button type="button" class="btn btn-primary">Sign Up</button>
         </a>

@@ -1,6 +1,35 @@
 {% extends 'hub/base.html' %}
 {% load static %}
 {% block title %}Login{% endblock %}
+{% block head %}
+    <style>
+        /* Increase font size */
+        .form-label,
+        .form-control {
+            font-size: 24px; /* Adjust the font size as needed */
+        }
+        /* Increase height */
+        .form-control {
+            height: 65px; /* Adjust the height as needed */
+        }
+        /* Increase button font size and height */
+        .btn {
+            font-size: 24px; /* Adjust the font size as needed */
+            height: 65px; /* Adjust the height as needed */
+        }
+
+        label {
+            font-size: 24px;
+        }
+
+        #rememberCheckbox {
+            height: 1.5em;
+            width: 1.5em;
+            margin-right: 10px;
+        }
+
+    </style>
+{% endblock %}
 {% block content %}
     <h1>Login</h1>
     <div class="container">
@@ -8,11 +37,11 @@
             <div class="col-md-6">
                 <form id="loginForm" action="{% url 'login' %}" method="post">
                     {% csrf_token %}
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label for="username" class="form-label">Username:</label>
                         <input type="text" class="form-control" id="username" name="username">
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label for="password" class="form-label">Password:</label>
                         <input type="password"
                                class="form-control"
@@ -27,7 +56,7 @@
                                name="remember">
                         <label class="form-check-label" for="rememberCheckbox">Remember Me?</label>
                     </div>
-                    <button type="submit" class="btn btn-success">Login</button>
+                    <button style="margin-top: 1em;" type="submit" class="btn btn-success">Login</button>
                 </form>
             </div>
         </div>

@@ -14,6 +14,11 @@ def index(request):
     return render(request, "hub/index_out.html")
 
 
+def branch_page(request, branch_id):
+    branch = Branch.objects.get(id=branch_id)
+    return render(request, "hub/branch_page.html", {"branch": branch})
+
+
 def login_view(request):
     if request.method == "POST":
         username = request.POST["username"]
